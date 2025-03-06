@@ -35,8 +35,29 @@ void playGame(string playerXName, string playerOName, int& playerXScore, int& pl
 //Function to validate integer inputs.
 int getIntegerInput(const string& prompt);
 
+void initializeBoard(std::vector<std::vector<char>>& board) {
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            board[i][j] = ' ';
+        }
+    }
+}
+
+void displayBoard(const std::vector<std::vector<char>>& board) {
+    std::cout << "-------------\n";
+    for (int i = 0; i < 3; ++i) {
+        std::cout << "| ";
+        for (int j = 0; j < 3; ++j) {
+            std::cout << board[i][j] << " | ";
+        }
+        std::cout << "\n-------------\n";
+    }
+}
 
 int main() {
+    std::vector<std::vector<char>> board(3, std::vector<char>(3));
+    initializeBoard(board);
+    displayBoard(board); // Temporary test
 
 
     return 0;
