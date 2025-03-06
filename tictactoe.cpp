@@ -32,6 +32,33 @@ void resetBoard(vector<char>& board);
 // Function to handle the game loop
 void playGame(string playerXName, string playerOName, int& playerXScore, int& playerOScore);
 
+bool getPlayerMove(std::vector<std::vector<char>>& board, int player) {
+    int x, y;
+    char symbol = (player == 1) ? 'X' : 'O';
+
+    while (true) {
+        std::cout << "Player " << player << " (" << symbol << "), enter row (0-2) and column (0-2): ";
+
+        if (!(std::cin >> x >> y)) { // Check for non-numeric input
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid input. Please enter numbers.\n";
+            continue;
+        }
+
+        if (x >= 0 && x < 3 && y >= 0 && y < 3) {
+            if (board[x][y] == ' ') {
+                board[x][y] = symbol;
+                return true;
+            } else {
+                std::cout << "Cell already occupied. Try again.\n";
+            }
+        } else {
+            std::cout << "Invalid coordinates. Please enter numbers between 0 and 2.\n";
+        }
+    }
+}
+
 //Function to validate integer inputs.
 int getIntegerInput(const string& prompt);
 
@@ -57,8 +84,12 @@ void displayBoard(const std::vector<std::vector<char>>& board) {
 int main() {
     std::vector<std::vector<char>> board(3, std::vector<char>(3));
     initializeBoard(board);
-    displayBoard(board); // Temporary test
+    displayBoard(board);
 
+    int player = 1; // Start with player 1
+
+    getPlayerMove(board, player);
+    displayBoard(board); // Display board after the move
 
     return 0;
 }
