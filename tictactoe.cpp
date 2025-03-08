@@ -5,8 +5,6 @@
 
 using namespace std;
 
-// Function to print the Tic-Tac-Toe board
-void printBoard(const vector<char>& board);
 
 // Function to check if a player has won
 bool checkWin(const vector<char>& board, char player);
@@ -71,13 +69,13 @@ void initializeBoard(vector<vector<char>>& board) {
 }
 
 void displayBoard(const vector<vector<char>>& board) {
-    std::cout << "-------------\n";
+    cout << "-------------\n";
     for (int i = 0; i < 3; ++i) {
-        std::cout << "| ";
+        cout << "| ";
         for (int j = 0; j < 3; ++j) {
-            std::cout << board[i][j] << " | ";
+            cout << board[i][j] << " | ";
         }
-        std::cout << "\n-------------\n";
+        cout << "\n-------------\n";
     }
 }
 
