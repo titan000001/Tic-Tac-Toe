@@ -32,17 +32,17 @@ void resetBoard(vector<char>& board);
 // Function to handle the game loop
 void playGame(string playerXName, string playerOName, int& playerXScore, int& playerOScore);
 
-bool getPlayerMove(std::vector<std::vector<char>>& board, int player) {
+bool getPlayerMove(vector<vector<char>>& board, int player) {
     int x, y;
     char symbol = (player == 1) ? 'X' : 'O';
 
     while (true) {
-        std::cout << "Player " << player << " (" << symbol << "), enter row (0-2) and column (0-2): ";
+        cout << "Player " << player << " (" << symbol << "), enter row (0-2) and column (0-2): ";
 
-        if (!(std::cin >> x >> y)) { // Check for non-numeric input
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Invalid input. Please enter numbers.\n";
+        if (!(cin >> x >> y)) { // Check for non-numeric input
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input. Please enter numbers.\n";
             continue;
         }
 
@@ -51,10 +51,10 @@ bool getPlayerMove(std::vector<std::vector<char>>& board, int player) {
                 board[x][y] = symbol;
                 return true;
             } else {
-                std::cout << "Cell already occupied. Try again.\n";
+                cout << "Cell already occupied. Try again.\n";
             }
         } else {
-            std::cout << "Invalid coordinates. Please enter numbers between 0 and 2.\n";
+            cout << "Invalid coordinates. Please enter numbers between 0 and 2.\n";
         }
     }
 }
@@ -62,7 +62,7 @@ bool getPlayerMove(std::vector<std::vector<char>>& board, int player) {
 //Function to validate integer inputs.
 int getIntegerInput(const string& prompt);
 
-void initializeBoard(std::vector<std::vector<char>>& board) {
+void initializeBoard(vector<vector<char>>& board) {
     for (int i = 0; i < 3; ++i) {
         for (int j = 0; j < 3; ++j) {
             board[i][j] = ' ';
@@ -70,7 +70,7 @@ void initializeBoard(std::vector<std::vector<char>>& board) {
     }
 }
 
-void displayBoard(const std::vector<std::vector<char>>& board) {
+void displayBoard(const vector<vector<char>>& board) {
     std::cout << "-------------\n";
     for (int i = 0; i < 3; ++i) {
         std::cout << "| ";
@@ -82,7 +82,7 @@ void displayBoard(const std::vector<std::vector<char>>& board) {
 }
 
 int main() {
-    std::vector<std::vector<char>> board(3, std::vector<char>(3));
+    vector<vector<char>> board(3, vector<char>(3));
     initializeBoard(board);
     displayBoard(board);
 
