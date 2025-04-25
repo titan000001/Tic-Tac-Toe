@@ -72,16 +72,32 @@ private:
         cout << endl;
         cout << "\t" << player.getName() <<" Turn: ";
         cout <<"\t Enter the position " << endl;
-        cin >> pos;
-        pos -=1;
-        if(emptyIndex[pos] == 1){
-            cout << "-----Position not empty-------"<< endl;
-            playerInput(player);
-        } else {
-            emptyIndex[pos] =1;
-            emptyCount-=1;
-            player.getName().compare("Player I") == 0 ? board[pos] ='X': board[pos] ='O';
+        while (true) {
+            cout << "\t" << player.getName() <<" Turn: ";
+            cout <<"\t Enter the position (1–9): ";
+            cin >> pos;
+
+            // Validate input: must be an integer between 1 and 9
+            if(cin.fail() || pos < 1 || pos > 9) {
+                cin.clear(); // clear error flag
+                cin.ignore(1000, '\n'); // discard bad input
+                cout << "Invalid input. Please enter a number from 1 to 9." << endl;
+                continue;
+            }
+
+            pos -= 1;
+            if(emptyIndex[pos] == 1){
+                cout << "-----Position not empty-------"<< endl;
+                continue;
+            } else {
+                break;
+            }
         }
+
+        emptyIndex[pos] = 1;
+        emptyCount -= 1;
+        player.getName().compare("Player I") == 0 ? board[pos] = 'X' : board[pos] = 'O';
+
  
     }
  
