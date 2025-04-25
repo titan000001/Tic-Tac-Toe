@@ -29,6 +29,7 @@ public:
  
 class Game {
 private:
+    int drawCount;
     char board[9];
     int emptyIndex[9];
     int gameOn, againstComputer;
@@ -164,6 +165,7 @@ private:
                 cout << "      -----------------------"<< endl;
                 cout << "\t No WINNER"<< endl;
                 cout << "      -----------------------"<< endl;
+                drawCount++;
             }
             cout<< endl;
             cout << "Rematch Y/N: ";
@@ -184,7 +186,7 @@ private:
     }
  
 public:
-    Game(): emptyCount{0}, gameOn{1}, againstComputer{0}{
+    Game(): emptyCount{0}, gameOn{1}, againstComputer{0}, drawCount{0}{
         init();
         winlist[0].row = new int[3]{0,1,2};
         winlist[1].row = new int[3]{3,4,5};
@@ -226,7 +228,7 @@ public:
 
         againstComputer = 1;
         play(c,p);
- 
+        showFinalStats(c, p); 
     }
  
     void twoPlayerGame(){
@@ -245,7 +247,22 @@ public:
         cout << endl;
         againstComputer = 0;
         play(c,p);
+        showFinalStats(c, p); 
     }
+
+    void showFinalStats(Player &p1, Player &p2) {
+    cout << "\n========== Final Stats ==========" << endl;
+    if (againstComputer) {
+        cout << "Player I Wins: " << p1.getScore() << endl;
+        cout << "Computer Wins: " << p2.getScore() << endl;
+    } else {
+        cout << "Player I Wins: " << p1.getScore() << endl;
+        cout << "Player II Wins: " << p2.getScore() << endl;
+    }
+    cout << "Draws: " << drawCount << endl;
+    cout << "=================================" << endl;
+    }
+
 };
  
 int main()
@@ -281,5 +298,6 @@ int main()
         }
  
     }
+
     return 0;
 }
