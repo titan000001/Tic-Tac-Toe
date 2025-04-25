@@ -200,7 +200,14 @@ public:
         cout << "       -----------------------"<< endl;
         cout << "\t Player I: X \t Computer: O"<< endl;
         cout << "       -----------------------"<< endl;
+        cout << "\nPosition Guide:\n";
+        cout << " 1 | 2 | 3\n";
+        cout << "-----------\n";
+        cout << " 4 | 5 | 6\n";
+        cout << "-----------\n";
+        cout << " 7 | 8 | 9\n\n";
         cout << endl;
+
         againstComputer = 1;
         play(c,p);
  
@@ -213,6 +220,12 @@ public:
         cout << "       -----------------------"<< endl;
         cout << "\t Player I: X \t Player II: O"<< endl;
         cout << "       -----------------------"<< endl;
+        cout << "\nPosition Guide:\n";
+        cout << " 1 | 2 | 3\n";
+        cout << "-----------\n";
+        cout << " 4 | 5 | 6\n";
+        cout << "-----------\n";
+        cout << " 7 | 8 | 9\n\n";
         cout << endl;
         againstComputer = 0;
         play(c,p);
